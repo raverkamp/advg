@@ -1,0 +1,32 @@
+2018-01-05_15:07
+neuer Versuch mit Polymer
+
+npm hat natürlich Ärger mit dem Nameserver, als nameserver auf 8.8.8.8 in /etc/resolv.conf setzen
+
+npm install -g polymer-cli
+
+Ich habe Simple Application Template installiert.
+
+2018-01-06_13:06
+Dies soll ein interface zu einer Datenbank sein,
+der API Methoden werden von einem anderen Server gehostet.
+Und dieser HTML/JS Code wird von Amazon S3 gehostet.
+Problem: Cross Site S3 ist HTTPS? Der lokale Server ist HTTP.
+Das funktioniert nicht. HTTPS ruft HTTP auf.
+
+Dann muss das Zeug wohl doch wieder lokal gehostet werden.
+
+Oder:
+In DB erste Seite bauen die Polymer und ein Custom Element läd.
+Dann geht es normal weiter.
+
+Wir brauchen ein Kommmunikator Object, wir beim laden erzeugt.
+
+Das funktioniert.
+
+
+
+
+
+
+

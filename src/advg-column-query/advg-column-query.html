@@ -1,0 +1,154 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+
+<dom-module id="advg-column-query">
+  <template>
+    <style>
+      #main {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      backgroundx:#ddf;
+      margin: 0px;
+      padding :0px;
+      width: 100%;
+      flex: 1 1 auto;
+    }
+      
+    .ffix {
+    flex: 0 0 auto;
+    padding: 4px;
+    }
+
+    #list {
+      background-color: #dd0;
+      flex: 1 1 auto;
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+      overflow-x:scroll;
+      overflow-y_scroll;
+    }
+
+      .c {
+      display: inline-block;
+      padding-top: 2px;
+      padding-bottom: 3px;
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      background-color: #ffffff;
+      }
+
+      .ch {
+      display: inline-block;
+      padding-top: 2px;
+      padding-bottom: 3px;
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      background-color: #aaaaaa;
+      }
+
+
+      
+      
+      .c1 {
+      width: 30ch;
+      }
+      
+      .c2 {
+      width: 30ch;
+      }
+
+      .c3 {
+      width:30ch;
+      }
+      
+      .c4 {
+      width: 30ch;
+      }
+
+      .item {
+      border-bottom: 1px solid #eee;
+      background-color: #eee;
+      padding: 2px;
+      font-family: monospace;
+      font-size:12px;
+      font-style:normal;
+      font-weight:normal;
+      height:auto;
+      letter-spacing:0.12px;
+      display: inline-block;
+      width:180ch;
+      }
+
+      .aright {
+      text-align: right;
+      }
+
+      #tab_header {
+      background: green;
+      xposition:relative;
+      xleft:100px;
+      }
+
+      #tab_container {
+      overflow-x:hidden;
+      flex: 0 0 auto;
+      }
+
+     </style>
+    <div id="main">
+    <div class="ffix">
+      <div class="heading">
+        Columns from Hell
+      </div>
+      <iron-input bind-value="{{table_name}}">
+        <input>
+      </iron-input>
+      <iron-input bind-value="{{column_name}}">
+        <input>
+      </iron-input>
+      <button on-click="click_query">Query</button>
+      <button on-click="click_create_excel">Excel</button>
+    </div>
+    <div id="tab_container">
+      <div class="item" id="tab_header">
+        <div class="c c1">Owner</div>
+        <div class="c c2">Table-Nme</div>
+        <div class="c c3">Column-Name</div>
+        <div class="c c4">Data-Type</div>
+        <div class="c c4">Data-Length</div>
+      </div>
+    </div>
+    <!--iron-list items="[[items]]"  id="list" on-scroll="scrollo">
+      <template>
+        <div class="item">
+          <div class="c c1">[[item.owner]]</div>
+          <div class="c c2">[[item.table_name]]</div>
+          <div class="c c3">[[item.column_name]]</div>
+          <div class="c c4">[[item.data_type]]</div>
+          <div class="c c4">[[item.data_length]]</div>
+      </template>
+    </iron-list-->
+    <div id="list" on-scroll="scrollo">
+      <template is="dom-repeat" items="[[items]]">
+        <div class="item">
+          <div class="c c1">[[item.owner]]</div>
+          <div class="c c2">[[item.table_name]]</div>
+          <div class="c c3">[[item.column_name]]</div>
+          <div class="c c4">[[item.data_type]]</div>
+          <div class="c c4 aright">[[item.data_length]]</div>
+      </template>
+    </div>
+    <div class="ffix">Dies könnte eine Statuszeile sein.</div>
+    </div>
+  </template>
+  <script src="../advg-lib.js"></script>
+  <script src="./advg-column-query.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/jsegarra1971/MyExcel/28fc1471/FileSaver.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/jsegarra1971/MyExcel/28fc1471/jszip.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/jsegarra1971/MyExcel/28fc1471/myexcel.js"></script>
+</dom-module>

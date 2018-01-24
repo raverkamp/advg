@@ -1,0 +1,6 @@
+{
+  "name": "adv-gui",
+  "short_name": "adv-gui",
+  "start_url": "/",
+  "display": "standalone"
+}
