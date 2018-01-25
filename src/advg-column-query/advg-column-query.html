@@ -9,7 +9,6 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      backgroundx:#ddf;
       margin: 0px;
       padding :0px;
       width: 100%;
@@ -19,16 +18,24 @@
     .ffix {
     flex: 0 0 auto;
     padding: 20px;
-    }
+      }
+
+      #header {
+      background-color: #aaaaaa;
+      }
+      #footer {
+      background-color: #aaaaaa;
+      }
 
     #list {
-      background-color: #dd0;
+      background-color: #ffffff;
       flex: 1 1 auto;
       padding: 0px;
       margin: 0px;
       border: 0px;
       overflow-x:scroll;
       overflow-y_scroll;
+      flex-direction: column;
     }
 
       .c {
@@ -38,7 +45,7 @@
       overflow:hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      background-color: #fffff;
+      background-color: #ffffff;
       }
 
       .ch {
@@ -49,28 +56,28 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       background-color: #000000;
-      foreground: #ffffff;
+      color: #ffffff;
       }
 
-      .c1 {
-      width: 30ch;
+      .c10 {
+      width: 10ch;
       }
       
-      .c2 {
-      width: 30ch;
+      .c20 {
+      width: 20ch;
       }
 
-      .c3 {
+      .c30 {
       width:30ch;
       }
       
-      .c4 {
-      width: 30ch;
+      .c40 {
+      width: 40ch;
       }
 
       .item {
-      border-bottom: 1px solid #eee;
-      background-color: #eee;
+      border-bottom: 1px solid #000;
+      background-color: #ffffff;
       padding: 2px;
       font-family: monospace;
       font-size:12px;
@@ -78,8 +85,8 @@
       font-weight:normal;
       height:auto;
       letter-spacing:0.12px;
-      display: inline-block;
-      width:180ch;
+      xdisplay: inline-block;
+      width:110ch;
       }
 
       .aright {
@@ -96,7 +103,7 @@
 
      </style>
     <div id="main">
-    <div class="ffix">
+    <div class="ffix" id="header">
       <div class="heading">
         Columns from the Database
       </div>
@@ -111,34 +118,24 @@
     </div>
     <div id="tab_container">
       <div class="item" id="tab_header">
-        <div class="ch c1">Owner</div>
-        <div class="ch c2">Table-Nme</div>
-        <div class="ch c3">Column-Name</div>
-        <div class="ch c4">Data-Type</div>
-        <div class="ch c4">Data-Length</div>
+        <div class="ch c20">Owner</div>
+        <div class="ch c30">Table-Nme</div>
+        <div class="ch c30">Column-Name</div>
+        <div class="ch c10">Data-Type</div>
+        <div class="ch c10">Data-Length</div>
       </div>
     </div>
-    <!--iron-list items="[[items]]"  id="list" on-scroll="scrollo">
-      <template>
-        <div class="item">
-          <div class="c c1">[[item.owner]]</div>
-          <div class="c c2">[[item.table_name]]</div>
-          <div class="c c3">[[item.column_name]]</div>
-          <div class="c c4">[[item.data_type]]</div>
-          <div class="c c4">[[item.data_length]]</div>
-      </template>
-    </iron-list-->
     <div id="list" on-scroll="scrollo">
       <template is="dom-repeat" items="[[items]]">
         <div class="item">
-          <div class="c c1">[[item.owner]]</div>
-          <div class="c c2">[[item.table_name]]</div>
-          <div class="c c3">[[item.column_name]]</div>
-          <div class="c c4">[[item.data_type]]</div>
-          <div class="c c4 aright">[[item.data_length]]</div>
+          <div class="c c20">[[item.owner]]</div>
+          <div class="c c30">[[item.table_name]]</div>
+          <div class="c c30">[[item.column_name]]</div>
+          <div class="c c10">[[item.data_type]]</div>
+          <div class="c c10 aright">[[item.data_length]]</div>
       </template>
     </div>
-    <div class="ffix">Got [[item_count]] rows.</div>
+    <div class="ffix" id="footer">Got [[item_count]] rows.</div>
     </div>
   </template>
   <script src="../advg-lib.js"></script>

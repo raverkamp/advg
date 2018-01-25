@@ -1,5 +1,5 @@
 create or replace package body adv_gui is
-  html_url varchar2(200) := 'http://localhost:8888/poly';
+ html_url varchar2(200) := 'http://localhost:8888/poly';
  --  html_url varchar2(200) := 'https://cdn.rawgit.com/raverkamp/advg/master';
   --html_url varchar2(200) := 'https://cdn.rawgit.com/raverkamp/advg/master/build/default';
  
@@ -14,47 +14,24 @@ create or replace package body adv_gui is
       to_json.cursor_to_json(c);
   end;
   
-  procedure demo1_x is
-  t varchar2(32000);
+  procedure menu is
   begin
-    t := q'[<!doctype html>
+    htp.p(q'[<!doctype html>
 <html lang="en">
   <head>
+    <title>Monitor Menu</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
-    <title>adv-gui</title>
-    <meta name="description" content="adv-gui description">
-    <style>
-    body {
-    height: 100%; 
-    width: 100%;
-    background:#ddf;
-    margin: 0px;
-    padding :0px;
-    overflow:hidden;
-    }
-    </style>
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
-    <script >
-      console.log("url",document.URL);
-      var api_url = "$api_url";
-    </script>
-    <script src="$html_url/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="$html_url/src/advg-column-query/advg-column-query.html">
-  </head>
+  </head> 
   <body>
-    <advg-column-query></advg-column-query>
+  <h1>Menu</h1>
+  <ul>
+  <li><a href="adv_gui.demo1" target="_blank">Demo1</a></li>
+  </ul>
   </body>
-</html>]';
-  t := replace(t,'$html_url',html_url);
-  t := replace(t,'$api_url',api_url);
-  htp.p(t);
-  end;
+</html>]');
+  end;  
   
-  
-  procedure render_component(compo varchar2) is
+  procedure render_component(compo varchar2, title varchar2) is
     t varchar2(32000);
   begin
     t := q'[<!doctype html>
@@ -63,7 +40,7 @@ create or replace package body adv_gui is
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>adv-gui</title>
+    <title>$title</title>
     <meta name="description" content="adv-gui description">
     <style>
     body {
@@ -95,11 +72,12 @@ create or replace package body adv_gui is
   t := replace(t,'$html_url',html_url);
   t := replace(t,'$api_url', api_url);
   t := replace(t, '$compo', compo);
+  t := replace(t, '$title', title);
   htp.p(t);
   end;
   
   procedure demo1 is
   begin
-    render_component('advg-column-query');
+    render_component('advg-column-query', 'Column Query');
   end;
 end;
