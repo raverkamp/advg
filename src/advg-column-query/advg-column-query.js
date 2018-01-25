@@ -15,6 +15,7 @@
                   type: Array,
                   value : []
               },
+              item_count: Number,
               table_name: {
                   type: String,
                   value: ""
@@ -32,6 +33,7 @@
             var r = await fetchAsync(api_url+"/adv_gui.column_query",
                                      {table_name: this.table_name, column_name: this.column_name})
             this.items = r;
+            this.item_count = r.length;
         }
 
         click_create_excel() {

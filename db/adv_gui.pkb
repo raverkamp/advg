@@ -1,7 +1,7 @@
 create or replace package body adv_gui is
-  --html_url varchar2(200) := 'http://localhost:8888/poly';
+  html_url varchar2(200) := 'http://localhost:8888/poly';
  --  html_url varchar2(200) := 'https://cdn.rawgit.com/raverkamp/advg/master';
-  html_url varchar2(200) := 'https://cdn.rawgit.com/raverkamp/advg/master/build/default';
+  --html_url varchar2(200) := 'https://cdn.rawgit.com/raverkamp/advg/master/build/default';
  
   api_url varchar2(200) :=  'http://localhost:8888/dads/user_jp';
   procedure column_query(table_name varchar2, column_name varchar2) as
